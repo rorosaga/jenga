@@ -1,9 +1,52 @@
 import pygame
 import random
+import numpy as np
 
-TOWER_HEIGHT = 20
+
+
+"""
+            Algorithms & Data Structures Group Project! 
+        This is a virtual version of the famous game of Jenga
+        
+    Total data structures used: 
+        1. Linked Lists
+        2. Matrices
+        
+    Total algorithms used:
+        1. Algo to generate the probability each cell has of falling, according to its position on the tower
+        3. Algo to check if the tower will fall after each move
+        2. Algo to add new elements to the top
+        
+    Features of our game:
+        - Backtracking: you will be able to go back after each move if you don't feel you removed the right piece
+        - Probabilistic piece removal: to account for skill in real life, we will be using a probabilistic model to
+                                       simulate what pieces would be harder to take out in a real game of jenga
+        - Matrix Indexing: after each move, we need to access the top-most index to add the new piece
+"""
+
+TOTAL_PIECES = 54
+TOWER_HEIGHT = 18
 TOWER_WIDTH = 3
+MAX_HEIGHT = 48
 
+# data structure no.1 -> Linked List
+# We will be using a linked list to keep track of all the moves the user makes in a game
+# This will be used to  be able to backtrack in the game if you feel you didn't like your move
+class Node:
+    def __init__(self, value, next):
+        self.value = value
+        self.next = next
+        
+
+# data structure no.2 -> Matrix
+# We will use a 2D matrix to represent our jenga game, each row will represent a possible level in jenga
+# We will initialize our array with the theoretical maximum height of a jenga game
+# We are doing this so we don't run out of space later on when we use the extra heights
+
+# this line creates an array for our jenga game with the amount of possible moves represented by the 
+# max height * 3, and the transforms it into a 2D array with 48 rows and 3 columns
+game_matrix = np.zeros(MAX_HEIGHT*3, dtype=int).reshape((MAX_HEIGHT, 3))
+print(game_matrix.shape)
 
 
 def initialize_tower(height):
