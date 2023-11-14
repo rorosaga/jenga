@@ -1,54 +1,79 @@
-import pygame
+# import pygame
 import random
 import numpy as np
-
-
+# import vpython
+from jenga import Jenga
+from data_structures import Node, Stack, TreeNode
 
 """
-            Algorithms & Data Structures Group Project! 
+            - Algorithms & Data Structures Group Project - 
         This is a virtual version of the famous game of Jenga
         
-    Total data structures used: 
-        1. Linked Lists
-        2. Matrices
-        
+    Total data structures used:
+        1. Linked List
+        2. Stacks
+        3. Matrices
+    
+    
     Total algorithms used:
         1. Algo to generate the probability each cell has of falling, according to its position on the tower
-        3. Algo to check if the tower will fall after each move
-        2. Algo to add new elements to the top
+        2. Algo to check if the tower will fall after each move + update values of the probability
+        3. Algo to add new elements to the top
         
     Features of our game:
         - Backtracking: you will be able to go back after each move if you don't feel you removed the right piece
         - Probabilistic piece removal: to account for skill in real life, we will be using a probabilistic model to
                                        simulate what pieces would be harder to take out in a real game of jenga
         - Matrix Indexing: after each move, we need to access the top-most index to add the new piece
+        
+    Explanation: In a Jenga game pieces are placed next to each other in blocks of three and on top of each other
+                 at 90° angle forming a grid. In order to simulate this, we will have an empty 3D matrix with the
+                 maximum theoretical height of a Jenga tower so that we can populate it after with ease. The 1st, 
+                 2nd, and 3rd dimensions will represent the height of our jenga game, each piece in our game, and 
+                 each component of every one piece, respectively. Since the pieces are placed on top of others at 
+                 right angles, taking out a singular piece will affect the weight distributed of at least 3 other
+                 pieces below. To account for this, each piece will be divided into 3 components: left, middle, and 
+                 right, that we will use to distribute our weight. 
 """
 
-TOTAL_PIECES = 54
-TOWER_HEIGHT = 18
-TOWER_WIDTH = 3
-MAX_HEIGHT = 48
 
-# data structure no.1 -> Linked List
-# We will be using a linked list to keep track of all the moves the user makes in a game
-# This will be used to  be able to backtrack in the game if you feel you didn't like your move
-class Node:
-    def __init__(self, value, next):
-        self.value = value
-        self.next = next
+def welcome_message():
+    ...
+
+
+def still_playing(game_matrix, gameover) -> bool:
+    # checks if game conditions are still valid -> the tower is still up 
+    
+    ...
         
 
-# data structure no.2 -> Matrix
-# We will use a 2D matrix to represent our jenga game, each row will represent a possible level in jenga
-# We will initialize our array with the theoretical maximum height of a jenga game
-# We are doing this so we don't run out of space later on when we use the extra heights
+def main():
+    welcome_message()
+    
+    game_matrix = Jenga() # fill the array with standard value - maybe a TreeNode
+    
+    gameover = False
+        
+    # variable to keep track of how many pieces you have taken out successfully
+    piece_counter = 0
+    
+    # using nodes for the components can be good to know what values we will change
+    # the node can have 3 children -> left, mid, right, component of the row below it
+    
+    still_playing(game_matrix, gameover) # should be passed every time update_weights is passed
+    
+    """
+    while !gameover: 
+        input = wait for input
+                
+        do action
+        
+        
+        gameover = still_playing(game_matrix, gameover)
+    """
 
-# this line creates an array for our jenga game with the amount of possible moves represented by the 
-# max height * 3, and the transforms it into a 2D array with 48 rows and 3 columns
-game_matrix = np.zeros(MAX_HEIGHT*3, dtype=int).reshape((MAX_HEIGHT, 3))
-print(game_matrix.shape)
 
-
+"""
 def initialize_tower(height):
     tower = []
     for _ in range(height):
@@ -96,11 +121,9 @@ def play_jenga():
 
         if is_jenga(jenga_tower):
             print("Congratulations! You've successfully built a Jenga tower!")
-            break
 
     if is_tower_empty(jenga_tower):
         print("Tower is empty. Game over!")
 
+"""
 
-if __name__ == "__main__":
-    play_jenga()
