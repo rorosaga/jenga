@@ -29,6 +29,13 @@ class JengaTower:
 # height = 3
 # tower = JengaTower(height)
 
+# # Modify the middle value of all pieces in the chosen layer
+# for layer in tower.layers:
+#     for piece in layer.pieces:
+#         piece.left = 1
+#         piece.middle = 1
+#         piece.right = 1
+
 # # Print each layer on a new line
 # for layer in tower.layers:
 #     print(layer)

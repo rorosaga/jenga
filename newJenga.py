@@ -4,7 +4,13 @@ class JengaGame:
     def __init__(self, tower_height):
         self.tower = JengaTower(tower_height)
         # EVERY LAYER VALUE STARTS AT 0
-        # when initializing game, populate layers with 1s to indicate piece
+
+        # when initializing game, populate layers with 1s to indicate presence of pieces
+        for layer in self.tower.layers:
+            for piece in layer.pieces:
+                piece.left = 1
+                piece.middle = 1
+                piece.right = 1
 
     def calculateProbability(self, block):
         # Placeholder for probability calculation
@@ -40,6 +46,9 @@ class JengaGame:
 def game_loop():
     game = JengaGame(3)
     game_over = False
+
+    for layer in game.tower.layers:
+        print(layer)
 
     while not game_over:
         # Player makes a move
