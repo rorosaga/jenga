@@ -3,12 +3,16 @@ from generateTower import *
 class JengaGame:
     def __init__(self, tower_height):
         self.tower = JengaTower(tower_height)
-        
+        # EVERY LAYER VALUE STARTS AT 0
+        # when initializing game, populate layers with 1s to indicate piece
+
     def calculateProbability(self, block):
         # Placeholder for probability calculation
         return 0.5
 
     def checkStability(self):
+        # base case: 1. only left or right piece left in layer
+        # base case: 2. no piece left in a layer
         self.currentSum = 0
         
         return True
@@ -22,12 +26,14 @@ class JengaGame:
 
     def removePiece(self, layer, piece):
         # Remove a piece from the tower
-        # Placeholder for piece removal logic
+        
         pass
 
     def backtracking(self):
         # Undo the last move
-        # Placeholder for backtracking logic
+        # Returns game_over = True, just in case player wants to backtrack after game over
+        # uses a stack or linked list to keep track of moves
+        # maybe, can add a limit to undo moves in game loop
         pass
 
 # Game loop
