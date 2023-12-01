@@ -1,12 +1,16 @@
 class JengaPiece:
     def __init__(self):
         # Each block has three components: left, middle, right
-        self.left = 0
-        self.middle = 0
-        self.right = 0
+        self.val = 0
+
+        # self.left = 0
+        # self.middle = 0
+        # self.right = 0
 
     def __repr__(self):
-        return f"[{self.left}, {self.middle}, {self.right}]"
+        return f"[{self.val}]"
+
+        # return f"[{self.left}, {self.middle}, {self.right}]"
 
 
 class JengaLayer:
@@ -21,7 +25,7 @@ class JengaLayer:
 class JengaTower:
     def __init__(self, height):
         self.layers = [JengaLayer("horizontal" if i % 2 == 0 else "vertical") for i in range(height)]
-        
+
     def __repr__(self):
         return repr(self.layers)
 
