@@ -1,3 +1,29 @@
+# To do:
+# Avg and worst runtime complexity of each function, in a READ.ME file and comments
+# Complexity in code comments and in the READ.ME file analysis. 
+
+# To add in the code:
+# - Add a function to check if the tower is stable
+# - Add a function
+# - Add a timer for each player which will later impact there scores. Add if timer runs out, plaer loses and is skipped.
+# The timer starts for the next player the moment the previous player makes a move. Timer starts with 50 seconds, which score = 10 * seconds left
+
+# - The array of scores will be sorted in descending order, so the player with the highest score will be at the top of the leaderboard. 
+# Use QuickSort to sort the array of scores. Analyze time complexity.
+
+# - Integrate graphics for the leaderboard and the tower in the game logic
+
+# Data structures:
+# - 3D matrix for the tower
+# - Hashmap for the leaderboard, key = player name, value = score
+# - Linked list for the moves, to be able to backtrack
+
+# Algorithms:
+# - Backtracking: you will be able to go back after each move if you don't feel you removed the right piece
+# - QuickSort: to sort the leaderboard in descending order
+
+
+
 from generateTower import *
 
 class JengaGame:
