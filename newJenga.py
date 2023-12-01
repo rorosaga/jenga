@@ -50,12 +50,12 @@ class JengaGame:
         # Condition 1: Right and middle pieces missing or left and middle pieces missing
             if (layer.pieces[0].val == 1 and layer.pieces[1].val == 0 and layer.pieces[2].val == 0) or \
                (layer.pieces[0].val == 0 and layer.pieces[1].val == 0 and layer.pieces[2].val == 1):
-                print("\nTower is unstable. Right and middle pieces or left and middle pieces are missing in a layer.")
+                print("\nNOOO!!! You removed the wrong piece (╥﹏╥)")
                 return False
 
         # Condition 2: No pieces left in the layer
             if layer.pieces[0].val == 0 and layer.pieces[1].val == 0 and layer.pieces[2].val == 0:
-                print("\nTower is unstable. No piece left in the a layer.")
+                print("\nNOOO!!! No more pieces left in that layer (╥﹏╥)")
                 return False
             
 
